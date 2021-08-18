@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { LOCALE_ID } from "@angular/core";
+import {registerLocaleData} from "@angular/common";
+
+import localEs from '@angular/common/locales/es';
 
 // Components
 import { AppComponent } from './app.component';
@@ -11,10 +15,13 @@ import { AboutmeComponent } from './components/home/aboutme/aboutme.component';
 import { ProfessionalComponent } from './components/home/professional/professional.component';
 import { SkillComponent } from './components/home/skill/skill.component';
 import { EducationComponent } from './components/home/education/education.component';
-import { CoursesComponent } from './components/home/courses/courses.component';
 
+import { CoursesComponent } from './components/home/courses/courses.component';
 // Routes
 import { APP_ROUTING } from "./app.routes";
+
+// Register Language
+registerLocaleData(localEs);
 
 @NgModule({
   declarations: [
@@ -33,7 +40,12 @@ import { APP_ROUTING } from "./app.routes";
     BrowserModule,
     APP_ROUTING
   ],
-  providers: [],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'es'
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
